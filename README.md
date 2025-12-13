@@ -9,7 +9,7 @@ https://github.com/AryaGupta05/FlowersClassificationCNN_MOBILENETV2_MODEL-DEEP-L
 
 ---
 
-## 🖼️ Main Banner
+## 
 
 <p align="center">
   <img src="https://i.imgur.com/32NtpAZ.jpeg" width="95%" style="border-radius:12px"/>
@@ -17,7 +17,7 @@ https://github.com/AryaGupta05/FlowersClassificationCNN_MOBILENETV2_MODEL-DEEP-L
 
 ---
 
-## 🖼️ Secondary Aesthetic Panel
+## 
 
 <p align="center">
   <img src="https://i.imgur.com/8bN6eOL.jpeg" width="90%" style="border-radius:12px"/>
