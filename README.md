@@ -53,8 +53,57 @@ Key Highlights:
 ---
 
 # 🧠 Model Architecture (Detailed)
+# 🧠 Model Architecture (MobileNetV2 Transfer Learning)
 
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/MobileNetV2-Architecture.png" width="70%">
-</p>
+The model uses **MobileNetV2** as a frozen feature extractor with a custom classification head.
+┌──────────────────────────────┐
+│        Input Image           │
+│       (180 × 180 × 3)        │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│   MobileNetV2 (Frozen Base)  │
+│  Pretrained on ImageNet      │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│  GlobalAveragePooling2D      │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│  Dense (128, ReLU)           │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│        Dropout (0.3)         │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│   Dense (5, Softmax Output)  │
+└──────────────────────────────┘
+
+
+**Explanation:**
+- **MobileNetV2** extracts high-level image features  
+- **GlobalAveragePooling** reduces feature maps efficiently  
+- **Dense + Dropout** improves learning and prevents overfitting  
+- **Softmax output** predicts one of the 5 flower classes  
+
+project_root/
+ ├── Flower_Classification_CNN.ipynb
+ ├── mobilenet_flower_model.h5
+ ├── dataset/
+ │    └── flowers/
+ │         ├── daisy/
+ │         ├── dandelion/
+ │         ├── rose/
+ │         ├── sunflower/
+ │         └── tulip/
+ ├── results/
+ │    ├── accuracy.png
+ │    ├── loss.png
+ │    └── confusion_matrix.png
+ └── README.md
+
+
 
