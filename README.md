@@ -1,14 +1,21 @@
-# 🌸 Flower Classification using MobileNetV2
-
-A high-accuracy Deep Learning project that classifies images into **Daisy, Dandelion, Rose, Sunflower, Tulip** using **MobileNetV2 Transfer Learning**.  
-Designed for **college submissions, ML portfolios, and production-ready pipelines**.
+# 🌸 Flower Classification using MobileNetV2  
+A deep-learning based flower classifier trained on 5 categories using **MobileNetV2 Transfer Learning**.  
+Designed for **college submission**, **portfolio showcase**, and **production-grade ML workflows**.
 
 ---
 
-## 🖼️ Project Banner
+## 🖼️ Main Banner
 
 <p align="center">
   <img src="https://i.imgur.com/32NtpAZ.jpeg" width="95%" style="border-radius:12px"/>
+</p>
+
+---
+
+## 🖼️ Secondary Aesthetic Panel
+
+<p align="center">
+  <img src="https://i.imgur.com/8bN6eOL.jpeg" width="90%" style="border-radius:12px"/>
 </p>
 
 ---
@@ -25,24 +32,29 @@ Designed for **college submissions, ML portfolios, and production-ready pipeline
 
 ---
 
-## 📌 Overview
+# 📌 Project Overview
 
-This project uses **MobileNetV2 (ImageNet pretrained)** as a frozen feature extractor and adds a custom classifier on top.  
-You get:
+This project uses **MobileNetV2**, pre-trained on ImageNet, as a frozen backbone.  
+On top of it, a lightweight classifier is trained to distinguish **5 flower species**:
 
-- 🌼 5-class flower classification  
-- 📊 Accuracy & loss visualizations  
-- 🔥 87% validation accuracy  
-- 🧪 Predict any custom image  
-- ⚡ High-speed GPU training  
+- 🌼 Daisy  
+- 🌾 Dandelion  
+- 🌹 Rose  
+- 🌻 Sunflower  
+- 🌷 Tulip  
+
+Key Highlights:
+- 87% validation accuracy  
+- GPU-powered training  
+- Clean architecture  
+- Predict any custom flower image  
+- College-ready visualizations + code  
 
 ---
 
-## 🌼 Dataset Preview
+# 🧠 Model Architecture (Detailed)
 
 <p align="center">
-  <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop" width="80%" style="border-radius:10px"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/MobileNetV2-Architecture.png" width="70%">
 </p>
-
-Dataset structure:
 
