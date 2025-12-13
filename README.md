@@ -162,7 +162,7 @@ Prediction: dandelion
 ## 👤 Author
 
 Arya Gupta  
-B.Tech CSE | Deep Learning | Transfer Learning  
+B.Tech CSE(AI&ML)
 
 GitHub: https://github.com/AryaGupta05
 
