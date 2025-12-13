@@ -1,6 +1,11 @@
-# 🌸 Flower Classification using MobileNetV2  
-A deep-learning based flower classifier trained on 5 categories using **MobileNetV2 Transfer Learning**.  
-Designed for **college submission**, **portfolio showcase**, and **production-grade ML workflows**.
+# 🌸 Flower Classification using MobileNetV2
+
+A deep-learning based flower classifier trained on 5 flower categories using
+MobileNetV2 Transfer Learning.
+Designed for college submission, portfolio showcase, and production-grade ML workflows.
+
+Repository:
+https://github.com/AryaGupta05/FlowersClassificationCNN_MOBILENETV2_MODEL-DEEP-LEARNING-
 
 ---
 
@@ -32,78 +37,133 @@ Designed for **college submission**, **portfolio showcase**, and **production-gr
 
 ---
 
-# 📌 Project Overview
+## 📌 Project Overview
 
-This project uses **MobileNetV2**, pre-trained on ImageNet, as a frozen backbone.  
-On top of it, a lightweight classifier is trained to distinguish **5 flower species**:
+This project uses MobileNetV2, pre-trained on ImageNet, as a frozen backbone.
+A lightweight custom classification head is trained to classify 5 flower species:
 
-- 🌼 Daisy  
-- 🌾 Dandelion  
-- 🌹 Rose  
-- 🌻 Sunflower  
-- 🌷 Tulip  
+- Daisy
+- Dandelion
+- Rose
+- Sunflower
+- Tulip
 
 Key Highlights:
-- 87% validation accuracy  
-- GPU-powered training  
-- Clean architecture  
-- Predict any custom flower image  
-- College-ready visualizations + code  
+- ~87% validation accuracy
+- GPU-powered training using Google Colab
+- Clean and efficient transfer learning architecture
+- Supports prediction on any custom flower image
+- College-ready visualizations and reproducible code
 
 ---
 
-# 🧠 Model Architecture (Detailed)
-# 🧠 Model Architecture (MobileNetV2 Transfer Learning)
+## 🧠 Model Architecture (MobileNetV2 Transfer Learning)
 
-The model uses **MobileNetV2** as a frozen feature extractor with a custom classification head.
-┌──────────────────────────────┐
-│        Input Image           │
-│       (180 × 180 × 3)        │
-└──────────────┬───────────────┘
-               ↓
-┌──────────────────────────────┐
-│   MobileNetV2 (Frozen Base)  │
-│  Pretrained on ImageNet      │
-└──────────────┬───────────────┘
-               ↓
-┌──────────────────────────────┐
-│  GlobalAveragePooling2D      │
-└──────────────┬───────────────┘
-               ↓
-┌──────────────────────────────┐
-│  Dense (128, ReLU)           │
-└──────────────┬───────────────┘
-               ↓
-┌──────────────────────────────┐
-│        Dropout (0.3)         │
-└──────────────┬───────────────┘
-               ↓
-┌──────────────────────────────┐
-│   Dense (5, Softmax Output)  │
-└──────────────────────────────┘
+The model follows a transfer learning pipeline where MobileNetV2 acts as a feature extractor
+and only the classifier head is trained.
 
+    Input Image (180 × 180 × 3)
+            |
+            v
+    MobileNetV2 Backbone
+    (Pretrained on ImageNet, Frozen Layers)
+            |
+            v
+    GlobalAveragePooling2D
+            |
+            v
+    Dense Layer (128 units, ReLU)
+            |
+            v
+    Dropout (0.3)
+            |
+            v
+    Output Layer (5 units, Softmax)
 
-**Explanation:**
-- **MobileNetV2** extracts high-level image features  
-- **GlobalAveragePooling** reduces feature maps efficiently  
-- **Dense + Dropout** improves learning and prevents overfitting  
-- **Softmax output** predicts one of the 5 flower classes  
+Architecture Explanation:
+- MobileNetV2 extracts high-level visual features from images
+- GlobalAveragePooling2D reduces spatial dimensions efficiently
+- Dense layer learns task-specific patterns
+- Dropout prevents overfitting
+- Softmax layer predicts one of the five flower classes
 
-project_root/
- ├── Flower_Classification_CNN.ipynb
- ├── mobilenet_flower_model.h5
- ├── dataset/
- │    └── flowers/
- │         ├── daisy/
- │         ├── dandelion/
- │         ├── rose/
- │         ├── sunflower/
- │         └── tulip/
- ├── results/
- │    ├── accuracy.png
- │    ├── loss.png
- │    └── confusion_matrix.png
- └── README.md
+---
 
+## 📈 Training Results
 
+Accuracy Curve:
+results/accuracy.png
 
+Loss Curve:
+results/loss.png
+
+Confusion Matrix:
+results/confusion_matrix.png
+
+---
+
+## 🧪 Testing the Model
+
+To test the trained model on any custom image, use:
+
+    predict_image("your_image.jpg")
+
+Sample Output:
+Prediction: dandelion
+
+---
+
+## 🗂 Project Structure
+
+    project_root/
+     ├── Flower_Classification_CNN.ipynb
+     ├── mobilenet_flower_model.h5
+     ├── dataset/
+     │    └── flowers/
+     │         ├── daisy/
+     │         ├── dandelion/
+     │         ├── rose/
+     │         ├── sunflower/
+     │         └── tulip/
+     ├── results/
+     │    ├── accuracy.png
+     │    ├── loss.png
+     │    └── confusion_matrix.png
+     └── README.md
+
+---
+
+## 🔧 Setup Instructions
+
+1. Clone the repository
+
+    git clone https://github.com/AryaGupta05/FlowersClassificationCNN_MOBILENETV2_MODEL-DEEP-LEARNING-
+    cd FlowersClassificationCNN_MOBILENETV2_MODEL-DEEP-LEARNING-
+
+2. Install dependencies
+
+    pip install tensorflow numpy matplotlib pillow scikit-learn
+
+3. Run the notebook
+
+    Flower_Classification_CNN.ipynb
+
+---
+
+## 🔮 Future Enhancements
+
+- Fine-tune MobileNetV2 for 90%+ validation accuracy
+- Deploy the model using Streamlit or Gradio
+- Convert the model to TensorFlow Lite for mobile deployment
+- Extend the dataset to include more flower categories
+
+---
+
+## 👤 Author
+
+Arya Gupta  
+B.Tech CSE | Deep Learning | Transfer Learning  
+
+GitHub: https://github.com/AryaGupta05
+
+If you like this project, please star the repository.
