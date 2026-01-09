@@ -6,52 +6,74 @@ import time
 
 # ================= PAGE CONFIG =================
 st.set_page_config(
-    page_title="FlowerVision AI 🌸",
+    page_title="FlowerVision AI",
     page_icon="🌸",
     layout="wide"
 )
 
-# ================= CUSTOM CSS =================
+# ================= ULTRA UI CSS =================
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap');
 
 html, body, [class*="css"] {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
+/* Animated gradient background */
 body {
-    background: linear-gradient(-45deg, #141e30, #243b55, #141e30);
-    background-size: 400% 400%;
-    animation: gradientBG 12s ease infinite;
+    background: linear-gradient(270deg, #ff512f, #dd2476, #24c6dc, #514a9d);
+    background-size: 800% 800%;
+    animation: gradientMove 18s ease infinite;
 }
 
-@keyframes gradientBG {
+@keyframes gradientMove {
     0% {background-position: 0% 50%;}
     50% {background-position: 100% 50%;}
     100% {background-position: 0% 50%;}
 }
 
+/* Glass card */
 .glass {
-    background: rgba(255,255,255,0.12);
-    border-radius: 22px;
-    padding: 2rem;
-    backdrop-filter: blur(18px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+    background: rgba(255,255,255,0.18);
+    border-radius: 24px;
+    padding: 24px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 25px rgba(255,255,255,0.25);
+    transition: transform 0.3s ease;
 }
 
-.fade {
-    animation: fadeIn 1.2s ease-in-out;
+.glass:hover {
+    transform: scale(1.02);
 }
 
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
+/* Title */
+.hero-title {
+    font-size: 52px;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
 
-.progress-label {
+.hero-sub {
+    text-align: center;
+    color: #f1f1f1;
+    margin-bottom: 30px;
+}
+
+/* Progress label */
+.label {
+    color: white;
     font-size: 14px;
-    opacity: 0.75;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    color: white;
+    opacity: 0.6;
+    margin-top: 50px;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -64,114 +86,71 @@ def load_model():
 model = load_model()
 class_names = ['daisy', 'dandelion', 'rose', 'sunflower', 'tulip']
 
-# ================= SIDEBAR (LIVE WORKING STEPS) =================
-st.sidebar.markdown("## 🌸 How This AI Works")
+# ================= SIDEBAR =================
+st.sidebar.markdown("## 🚀 Live AI Workflow")
 st.sidebar.markdown("""
-**Live Prediction Pipeline**
-
-**1️⃣ Image Upload**  
-User uploads a flower image.
-
-**2️⃣ Preprocessing**  
-Image resized to **224×224**, normalized.
-
-**3️⃣ CNN Feature Extraction**  
-MobileNetV2 extracts deep visual features.
-
-**4️⃣ Classification Layer**  
-Softmax layer predicts flower class.
-
-**5️⃣ Confidence Score**  
-Probability distribution shown in real-time.
+🟢 **Step 1:** Upload Flower Image  
+🟢 **Step 2:** Image Resized & Normalized  
+🟢 **Step 3:** CNN Feature Extraction  
+🟢 **Step 4:** Softmax Classification  
+🟢 **Step 5:** Confidence Visualization  
 
 ---
+### 🧠 Model
+• MobileNetV2  
+• CNN + Transfer Learning  
 
-### 🔬 Model Info
-- CNN + Transfer Learning  
-- MobileNetV2 backbone  
-- Lightweight & fast inference  
-
----
-
-### 🌍 Use Cases
-- Agriculture & farming  
-- Botanical research  
-- Education tools  
-- Mobile AI apps  
+### 🌍 Uses
+• Agriculture  
+• Botany  
+• Education  
 
 **Built by Arya Gupta**
 """)
 
-# ================= HERO SECTION =================
-st.markdown("""
-<div class="glass fade" style="text-align:center; margin-bottom:30px;">
-    <h1>🌸 FlowerVision AI</h1>
-    <p>Professional flower classification system with live deep learning inference</p>
-</div>
-""", unsafe_allow_html=True)
+# ================= HERO =================
+st.markdown("<div class='hero-title'>🌸 FlowerVision AI</div>", unsafe_allow_html=True)
+st.markdown("<div class='hero-sub'>Next-Gen Flower Classification using Deep Learning</div>", unsafe_allow_html=True)
 
-# ================= SAMPLE IMAGES =================
-st.markdown("### 🌼 Sample Flower Categories")
-sample_cols = st.columns(5)
-samples = ["Daisy", "Dandelion", "Rose", "Sunflower", "Tulip"]
-
-for col, name in zip(sample_cols, samples):
+# ================= SAMPLE CARDS =================
+st.markdown("### 🌼 Flower Categories")
+cols = st.columns(5)
+for col, name in zip(cols, class_names):
     with col:
-        st.markdown(f"""
-        <div class="glass fade" style="text-align:center; padding:10px;">
-            <p>{name}</p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown(f"<div class='glass' style='text-align:center;color:white;'><b>{name.capitalize()}</b></div>", unsafe_allow_html=True)
 
-# ================= FILE UPLOAD =================
-uploaded_file = st.file_uploader(
-    "📤 Upload a flower image",
-    type=["jpg", "jpeg", "png"]
-)
+# ================= UPLOAD =================
+uploaded_file = st.file_uploader("📤 Upload a flower image", type=["jpg","jpeg","png"])
 
 if uploaded_file:
     image = Image.open(uploaded_file).convert("RGB")
+    c1, c2 = st.columns([1.1, 1])
 
-    col1, col2 = st.columns([1.2, 1])
-
-    # -------- IMAGE CARD --------
-    with col1:
-        st.markdown("<div class='glass fade'>", unsafe_allow_html=True)
-        st.image(image, caption="Uploaded Image", use_column_width=True)
+    with c1:
+        st.markdown("<div class='glass'>", unsafe_allow_html=True)
+        st.image(image, use_column_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
-    # -------- PREDICTION CARD --------
-    with col2:
-        st.markdown("<div class='glass fade'>", unsafe_allow_html=True)
+    with c2:
+        st.markdown("<div class='glass'>", unsafe_allow_html=True)
 
-        img = image.resize((224, 224))
-        img_array = np.array(img) / 255.0
+        img = image.resize((224,224))
+        img_array = np.array(img)/255.0
         img_array = np.expand_dims(img_array, axis=0)
 
-        with st.spinner("🧠 AI is analyzing the image..."):
+        with st.spinner("⚡ AI Processing..."):
             time.sleep(1)
             preds = model.predict(img_array)[0]
 
-        top_indices = preds.argsort()[-3:][::-1]
+        top = preds.argsort()[-3:][::-1]
+        st.markdown(f"<h2 style='color:white;'>🌼 {class_names[top[0]].capitalize()}</h2>", unsafe_allow_html=True)
 
-        st.markdown("### 🌼 Prediction Result")
-        st.markdown(
-            f"<h2>{class_names[top_indices[0]].capitalize()}</h2>",
-            unsafe_allow_html=True
-        )
-
-        st.markdown("### 📊 Confidence Distribution")
-        for idx in top_indices:
-            label = class_names[idx].capitalize()
-            score = preds[idx] * 100
-            st.markdown(f"<span class='progress-label'>{label} — {score:.2f}%</span>", unsafe_allow_html=True)
+        for i in top:
+            score = preds[i]*100
+            st.markdown(f"<div class='label'>{class_names[i].capitalize()} — {score:.2f}%</div>", unsafe_allow_html=True)
             st.progress(int(score))
 
         st.markdown("</div>", unsafe_allow_html=True)
 
 # ================= FOOTER =================
-st.markdown("""
-<div style="text-align:center; opacity:0.6; margin-top:40px;">
-🚀 Live AI System • CNN • Streamlit Deployment
-</div>
-""", unsafe_allow_html=True)
+st.markdown("<div class='footer'>⚡ Production-grade AI • Live Deployment</div>", unsafe_allow_html=True)
