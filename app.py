@@ -11,7 +11,8 @@ def load_model():
 
 model = load_model()
 
-class_names = ['Daisy', 'Dandelion', 'Rose', 'Sunflower', 'Tulip']
+# ⚠️ Order MUST match training
+class_names = ['daisy', 'dandelion', 'rose', 'sunflower', 'tulip']
 
 st.title("🌸 Flower Classification using CNN")
 st.write("Upload a flower image and get prediction instantly")
@@ -32,5 +33,5 @@ if uploaded_file is not None:
     predicted_class = class_names[np.argmax(prediction)]
     confidence = np.max(prediction) * 100
 
-    st.success(f"🌼 Prediction: **{predicted_class}**")
+    st.success(f"🌼 Prediction: **{predicted_class.capitalize()}**")
     st.info(f"🔍 Confidence: **{confidence:.2f}%**")
