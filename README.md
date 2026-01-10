@@ -8,7 +8,9 @@ Repository:
 https://github.com/AryaGupta05/FlowersClassificationCNN_MOBILENETV2_MODEL-DEEP-LEARNING-
 
 ---
-
+LIVE DEMO:
+You can acess the live demo of this project in real time here.
+https://flowerclassificationcnndeeplearning.streamlit.app/
 ## 
 
 <p align="center">
