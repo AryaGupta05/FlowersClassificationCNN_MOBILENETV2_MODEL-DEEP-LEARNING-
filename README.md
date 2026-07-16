@@ -2,7 +2,6 @@
 
 A deep-learning based flower classifier trained on 5 flower categories using
 MobileNetV2 Transfer Learning.
-Designed for college submission, portfolio showcase, and production-grade ML workflows.
 
 Repository:
 https://github.com/AryaGupta05/FlowersClassificationCNN_MOBILENETV2_MODEL-DEEP-LEARNING-
